@@ -51,21 +51,22 @@ function draw() {
 	// Forest Scene
 	background(200, 0, 0);
 	image(backgroundImg, 0, 0);
-	image(littlegirl, mouseX - 350, 10, 800, 700);
+	tint(tintOne, tintTwo, 255);
+	image(littlegirl, 450, 300, 200, 330);
 
 	// Write text "happiness can be found even in the darkest of times"
 	tint(255, 255, 255, textOne);
-	image(happinessText, 200, 10, 400, 300);
-	image(darknessText, 300, -150, 400, 300);
+	image(happinessText, 200, 130, 400, 60);
+	image(darknessText, 300, 200, 400, 50);
 
 	// write text "if one only remembers to turn on the light"
 	tint(255, 255, 255, textTwo);
-	image(lightText, 200, -100, 500, 400);
+	image(lightText, 200, 100, 500, 100);
 
 
 	// Lantern Light
 	tint(random(225, 250), random(175, 225), random(200, 255), glowOn);
-	image(glow, mouseX + 20, 270, 120, 120);
+	image(glow, 560, 330, 120, 120);
 
 	// Make Fireflies Flutter
 	for (var i = 0; i < 20; i++) {
@@ -75,11 +76,11 @@ function draw() {
 
 
 		// Draw Fireflies
-		var bubbleSize = i + 20;
+		var size = i + 20;
 		rotate(PI / 3.0);
 		tint(random(225, 250), random(175, 225), random(200, 255), glowOn);
-		image(firefly, xPositions[i], yPositions[i], bubbleSize + 5, bubbleSize + 5);
-		image(glow, xPositions[i] + 8, yPositions[i] + 6, bubbleSize, bubbleSize);
+		image(firefly, xPositions[i], yPositions[i], size + 5, size + 5);
+		image(glow, xPositions[i] + 8, yPositions[i] + 6, size, size);
 
 
 	}
@@ -88,17 +89,25 @@ function draw() {
 
 // Change lighting and text when mouse is clicked
 function mousePressed() {
-	if (glowOn == 0) {
-		glowOn = 255;
-		tintOne = 100;
-		tintTwo = 50;
-		textOne = 0;
-		textTwo = 255;
-	} else {
-		glowOn = 0
-		tintOne = 50;
-		tintTwo = 65;
-		textOne = 100;
-		textTwo = 0;
+	if (mouseIsPressed &&
+		mouseX > 570 &&
+		mouseX < 650 &&
+		mouseY > 300 &&
+		mouseY < 400) {
+
+
+		if (glowOn == 0) {
+			glowOn = 255;
+			tintOne = 100;
+			tintTwo = 50;
+			textOne = 0;
+			textTwo = 255;
+		} else {
+			glowOn = 0
+			tintOne = 50;
+			tintTwo = 55;
+			textOne = 100;
+			textTwo = 0;
+		}
 	}
 }
